@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Eren Yayın</title>
+    <title>Eren Yayın Panel :)</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
-        body { background: #111; color: white; font-family: sans-serif; text-align: center; padding-top: 50px; }
-        video { border: 2px solid #555; border-radius: 10px; max-width: 90%; }
+        body { background: #111; color: white; text-align: center; font-family: sans-serif; }
+        video { width: 80%; border: 2px solid #444; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <h1>Yayın</h1>
-    <p>GitHub Pages üzerinden ilk deneme.</p>
-    
-    <video width="720" controls autoplay>
-        <source src="https://mn-nl.mncdn.com/blutv_showtv/smil:show_sd.smil/playlist.m3u8" type="application/x-mpegURL">
-        Tarayıcın bu videoyu desteklemiyor.
-    </video>
+    <h1>Canlı Yayın Test</h1>
+    <video id="video" controls autoplay></video>
 
-    <br><br>
-    <p>Eren Övecek - 2026 Test</p>
+    <script>
+      var video = document.getElementById('video');
+      // BURAYA KENDİ LİNKİNİ YAPIŞTIR
+      var videoSrc = 'BURAYA_M3U8_LINKINI_YAZ'; 
+      
+      if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoSrc;
+      }
+    </script>
+    <p>Eren Övecek - 2026</p>
 </body>
 </html>
