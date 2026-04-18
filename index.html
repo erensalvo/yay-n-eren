@@ -1,30 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Eren Yayın Panel :)</title>
+    <title>Eren Yayın Paneli :)</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
-        body { background: #111; color: white; text-align: center; font-family: sans-serif; }
-        video { width: 80%; border: 2px solid #444; margin-top: 20px; }
+        body { background: #111; color: white; text-align: center; font-family: sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: auto; }
+        video { width: 100%; border: 2px solid #333; border-radius: 8px; background: #000; }
+        .btn-group { margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        button { 
+            padding: 12px 20px; border: none; border-radius: 5px; 
+            background: #222; color: #fff; cursor: pointer; 
+            font-weight: bold; transition: 0.3s; border: 1px solid #444;
+        }
+        button:hover { background: #ce1126; border-color: #fff; } /* Samsunspor kırmızısı olsun :) */
+        .active { background: #ce1126; border-color: #fff; }
     </style>
 </head>
 <body>
-    <h1>Canlı Yayın Test</h1>
+
+<div class="container">
+    <h1 id="channel-title">BeIN Sports 1</h1>
     <video id="video" controls autoplay></video>
 
-    <script>
-      var video = document.getElementById('video');
-      // BURAYA KENDİ LİNKİNİ YAPIŞTIR
-      var videoSrc = 'https://dga1op10s1u3leo.2cc1c0fe5e38a1.click/live/xbeinsports-1/playlist.m3u8'; 
-      
-      if (Hls.isSupported()) {
-        var hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = videoSrc;
-      }
-    </script>
-    <p>Eren Övecek - 2026</p>
+    <div class="btn-group">
+        <button onclick="changeChannel('BeIN Sports 1', 'https://dga1op10s1u3leo.2cc1c0fe5e38a1.click/live/xbeinsports-1/playlist.m3u8')">BeIN 1</button>
+        <button onclick="changeChannel('BeIN Sports 2', 'https://dga1op10s1u3leo.2cc1c0fe5e38a1.click/live/xbeinsports-2/playlist.m3u8')">BeIN 2</button>
+        <button onclick="changeChannel('BeIN Sports 3', 'https://dga1op10s1u3leo.2cc1c0fe5e38a1.click/live/xbeinsports-2/playlist.m3u8')">BeIN 3</button>
+    </div>
+</div>
+
+<script>
+  var video = document.getElementById('video');
+  var hls = new Hls();
+
+  function changeChannel(name, url) {
+    document.getElementById('channel-title').innerText = name;
+    
+    if (Hls.isSupported()) {
+      hls.destroy(); // Eski yayını temizle
+      hls = new Hls();
+      hls.loadSource(url);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, function() {
+        video.play();
+      });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = url;
+      video.play();
+    }
+  }
+
+  // Sayfa ilk açıldığında varsayılan olarak BeIN 1 başlasın
+  changeChannel('BeIN Sports 1', 'LINK_1_BURAYA');
+</script>
+
 </body>
 </html>
