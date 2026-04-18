@@ -8,13 +8,33 @@
         .container { max-width: 900px; margin: auto; }
         video { width: 100%; border: 2px solid #333; border-radius: 8px; background: #000; }
         .btn-group { margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        button { 
-            padding: 12px 20px; border: none; border-radius: 5px; 
-            background: #222; color: #fff; cursor: pointer; 
-            font-weight: bold; transition: 0.3s; border: 1px solid #444;
-        }
-        button:hover { background: #ce1126; border-color: #fff; } /* Samsunspor kırmızısı olsun :) */
-        .active { background: #ce1126; border-color: #fff; }
+        button {
+    padding: 14px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* İnce, şeffaf bir çerçeve */
+    border-radius: 12px;
+    background: linear-gradient(145deg, #1e1e1e, #161616); /* Hafif derinlik veren geçiş */
+    color: #e0e0e0;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Esnek ve elit bir geçiş */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px); /* Arka planı hafif bulandırır (Cam efekti) */
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: #ce1126; /* Samsunspor Kırmızısı */
+    color: #fff;
+    transform: translateY(-5px) scale(1.05); /* Hem yukarı zıplar hem hafif büyür */
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 25px rgba(206, 17, 38, 0.5); /* Kırmızı asil bir parlama */
+}
+
+/* Tıkladığında basılma hissi veren efekt */
+button:active {
+    transform: translateY(-2px) scale(0.98);
+}
     </style>
 </head>
 <body>
