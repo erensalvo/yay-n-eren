@@ -48,11 +48,10 @@ button:active {
 <div class="container">
     <h1 id="channel-title">BeIN Sports 1</h1>
     <video id="video" controls autoplay></video>
-<div id="welcome-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-    <video id="welcome-video" autoplay muted playsinline style="width:100%; max-width:800px;">
-        <source src="welcome.mp4" type="video/mp4">
-    </video>
-    <button onclick="startApp()" style="margin-top:20px; padding:10px 30px; background:#8c1724; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">SİTEYE GİRİŞ YAP</button>
+<div id="welcome-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; display:flex; justify-content:center; align-items:center; backdrop-filter: blur(5px);">
+    <button onclick="startApp()" style="padding:20px 50px; background:#8c1724; color:white; border:2px solid #ff0000; border-radius:12px; cursor:pointer; font-weight:bold; font-size:24px; box-shadow: 0 0 30px rgba(140, 23, 36, 0.6); transition: 0.3s; letter-spacing: 2px;">
+        SİTEYE GİRİŞ YAP
+    </button>
 </div>
     <div class="btn-group">
         <button onclick="changeChannel('BeIN Sports 1', 'https://hlssssssssssss.naciyeyildiz7361.workers.dev/https://corestream.ronaldovurdu.help//hls/bein-sports-11.m3u8')">BeIN 1</button>
