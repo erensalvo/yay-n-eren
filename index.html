@@ -48,7 +48,12 @@ button:active {
 <div class="container">
     <h1 id="channel-title">BeIN Sports 1</h1>
     <video id="video" controls autoplay></video>
-
+<div id="welcome-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+    <video id="welcome-video" autoplay muted playsinline style="width:100%; max-width:800px;">
+        <source src="welcome.mp4" type="video/mp4">
+    </video>
+    <button onclick="startApp()" style="margin-top:20px; padding:10px 30px; background:#8c1724; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">SİTEYE GİRİŞ YAP</button>
+</div>
     <div class="btn-group">
         <button onclick="changeChannel('BeIN Sports 1', 'https://hlssssssssssss.naciyeyildiz7361.workers.dev/https://corestream.ronaldovurdu.help//hls/bein-sports-11.m3u8')">BeIN 1</button>
         <button onclick="changeChannel('BeIN Sports 2', 'https://hlssssssssssss.naciyeyildiz7361.workers.dev/https://corestream.ronaldovurdu.help//hls/bein-sports-2.m3u8')">BeIN 2</button>
@@ -84,6 +89,14 @@ button:active {
 
   // Sayfa ilk açıldığında varsayılan olarak BeIN 1 başlasın
   changeChannel('BeIN Sports 1', 'https://dga1op10s1u3leo.2cc1c0fe5e38a1.click/live/xbeinsports-1/playlist.m3u8');
+    function startApp() {
+    const screen = document.getElementById('welcome-screen');
+    screen.style.transition = 'opacity 0.8s ease'; // Yumuşak kapanış
+    screen.style.opacity = '0';
+    setTimeout(() => {
+        screen.style.display = 'none';
+    }, 800);
+}
 </script>
 
 </body>
