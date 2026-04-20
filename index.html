@@ -94,18 +94,17 @@ button:active {
         screen.style.display = 'none';
     }, 800);
 }
-    function playLocalVideo(name, url) {
-    // Kanal başlığını güncelle
+   function playLocalVideo(name, url) {
     document.getElementById('channel-title').innerText = name;
     
-    // Eğer o sırada bir canlı yayın (HLS) açıksa onu durdur
+    // Canlı yayın motorunu tamamen kapat ve temizle
     if (hls) {
         hls.destroy();
-        hls = new Hls(); // Gelecekteki yayınlar için motoru sıfırla
+        hls = new Hls(); 
     }
     
-    // MP4 dosyasını video oynatıcıya yükle ve başlat
     video.src = url;
+    video.loop = true;  // SADECE BU FONKSİYONDA video bitince başa sarar.
     video.load();
     video.play();
 }
