@@ -37,20 +37,51 @@ button:hover {
     box-shadow: 0 8px 25px rgba(206, 17, 38, 0.5); /* Kırmızı asil bir parlama */
 } 
     body {
-    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%); /* Derin karanlık gradyanın */
     color: white;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
+    
+    /* İŞTE ARKA PLANI DOLDURAN EFELT BURADA: */
+    /* 1. Uzay filmlerindeki gibi yarı saydam bir 'veri ızgarası' ekliyoruz. */
+    background-image: 
+        linear-gradient(rgba(131, 28, 12, 0.05) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(131, 28, 12, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px; /* Izgaranın büyüklüğü */
+    
+    /* 2. Buna bir de 'sinyal paraziti' efekti katalım, sanki veriler akıyor gibi. */
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 3. Ve o ızgaranın üzerinde çok hafif, hareketli bir 'sinyal dalgası' gezdirelim. */
+body::after {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* Çok hafif, saydam bir dalga */
+    background: repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(131, 28, 12, 0.02) 101px, rgba(131, 28, 12, 0.02) 102px);
+    animation: signalWave 10s linear infinite;
+    z-index: -1; /* En altta, her şeyin arkasında kalsın */
+    pointer-events: none;
+}
+
+@keyframes signalWave {
+    from { transform: translateY(0%); }
+    to { transform: translateY(50%); }
 }
 
 /* Tıkladığında basılma hissi veren efekt */
 button:active {
     transform: translateY(-2px) scale(0.98);
-}/* Arka Planı Premium Yap */
+}/* Arka Planı Premium Yap */                                 
 body {
-    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%) !important;
+    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
     margin: 0;
     padding: 20px;
 }
