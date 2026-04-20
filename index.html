@@ -69,11 +69,36 @@ body {
 
 @keyframes blinker {
     50% { opacity: 0; }
+} 
+.top-info {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff0000;
+    text-shadow: 0 0 5px #ff0000;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+#digital-clock {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.viewer-count {
+    font-size: 14px;
+    color: #eee;
+    text-shadow: none;
 }
     </style>
 </head>
 <body>
-
+<div class="top-info">
+    <div id="digital-clock">00:00:00</div>
+    <div class="viewer-count"><span class="live-dot"></span> <span id="viewers">1.248</span> İZLEYİCİ</div>
+</div> 
 <div class="container">
     <h1 id="channel-title">BeIN Sports 1</h1>
     <video id="video" controls autoplay></video>
@@ -137,6 +162,16 @@ body {
     video.load();
     video.play();
 }
+    function updateClock() {
+    const now = new Date();
+    document.getElementById('digital-clock').innerText = now.toLocaleTimeString();
+    
+    const baseViewers = 1240;
+    const randomExtra = Math.floor(Math.random() * 20);
+    document.getElementById('viewers').innerText = (baseViewers + randomExtra).toLocaleString();
+}
+setInterval(updateClock, 1000);
+updateClock();
 </script>
 
 </body>
