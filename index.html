@@ -47,7 +47,7 @@ button:active {
 
 <div class="container">
     <h1 id="channel-title">BeIN Sports 1</h1>
-    <video id="video" controls autoplay></video>
+    <video id="video" autoplay muted playsinline></video>
 <div id="welcome-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; display:flex; justify-content:center; align-items:center; backdrop-filter: blur(5px);">
     <button onclick="startApp()" style="padding:20px 50px; background:#8c1724; color:white; border:2px solid #ff0000; border-radius:12px; cursor:pointer; font-weight:bold; font-size:24px; box-shadow: 0 0 30px rgba(140, 23, 36, 0.6); transition: 0.3s; letter-spacing: 2px;">
         SİTEYE GİRİŞ YAP
@@ -105,6 +105,7 @@ button:active {
     
     video.src = url;
     video.loop = true;  // SADECE BU FONKSİYONDA video bitince başa sarar.
+    video.controls = false; // saniye barını ve butonları tamamen gizler.
     video.load();
     video.play();
 }
