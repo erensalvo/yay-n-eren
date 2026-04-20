@@ -166,7 +166,7 @@ body {
     const now = new Date();
     document.getElementById('digital-clock').innerText = now.toLocaleTimeString();
     
-    const baseViewers = 1240;
+    const baseViewers = 800;
     const randomExtra = Math.floor(Math.random() * 20);
     document.getElementById('viewers').innerText = (baseViewers + randomExtra).toLocaleString();
 }
