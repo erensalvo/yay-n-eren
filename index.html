@@ -60,6 +60,7 @@ button:active {
         <button onclick="changeChannel('BeIN Sports 4', 'https://hlssssssssssss.vipescgidiyom.workers.dev/https://corestream.ronaldovurdu.help//hls/bein-sports-4.m3u8')">BeIN 4</button>
         <button onclick="changeChannel('S SPORT', 'https://streamable.com/7rc861')">S SPORT</button>
         <button onclick="changeChannel('TRT 1', 'https://tv-trt1.medya.trt.com.tr/master_1440.m3u8')">TRT 1</button>
+        <button onclick="playLocalVideo('Özel Video', 'WhatsApp Video 2026-04-20 at 15.21.15.mp4')">Kendi Videom</button>
     </div>
 </div>
 
@@ -93,6 +94,21 @@ button:active {
     setTimeout(() => {
         screen.style.display = 'none';
     }, 800);
+}
+    function playLocalVideo(name, url) {
+    // Kanal başlığını güncelle
+    document.getElementById('channel-title').innerText = name;
+    
+    // Eğer o sırada bir canlı yayın (HLS) açıksa onu durdur
+    if (hls) {
+        hls.destroy();
+        hls = new Hls(); // Gelecekteki yayınlar için motoru sıfırla
+    }
+    
+    // MP4 dosyasını video oynatıcıya yükle ve başlat
+    video.src = url;
+    video.load();
+    video.play();
 }
 </script>
 
