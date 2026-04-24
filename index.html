@@ -160,15 +160,9 @@ body {
     color: #eee;
     text-shadow: none;
 }
-        :root { --bg-color: #0f172a; --text-color: #eee; }
-[data-theme="light"] { --bg-color: #f1f5f9; --text-color: #1e293b; }
-body { background-color: var(--bg-color) !important; color: var(--text-color) !important; transition: 0.3s; }
-#theme-toggle { position: fixed; top: 10px; right: 10px; z-index: 9999; cursor: pointer; background: rgba(255,255,255,0.1); border: none; padding: 10px; border-radius: 50%; }
-        
     </style>
 </head>
 <body>
-    <button id="theme-toggle">🌙</button>
 <div class="top-info">
     <div id="digital-clock">00:00:00</div>
     <div class="viewer-count"><span class="live-dot"></span> <span id="viewers">800</span> İZLEYİCİ</div>
@@ -260,18 +254,6 @@ body { background-color: var(--bg-color) !important; color: var(--text-color) !i
 }
 setInterval(updateClock, 1000);
 updateClock();
-
-    const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-    let theme = document.documentElement.getAttribute('data-theme');
-    if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeToggle.textContent = '🌙';
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeToggle.textContent = '☀️';
-    }
-});
 </script>
 
 </body>
